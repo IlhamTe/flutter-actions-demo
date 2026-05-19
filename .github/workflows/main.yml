@@ -98,7 +98,8 @@ jobs:
 
           - name: Copy Fastline to project
             run: |
-              cp secrets/fastlane/* project/
+              mkdir -p project/fastlane
+              cp secrets/fastlane/* project/fastlane
 
           - name: Setup Ruby and Fastlane
             uses: ruby/setup-ruby@v1
