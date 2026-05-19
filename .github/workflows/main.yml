@@ -66,7 +66,7 @@ jobs:
     
         needs: build
     
-        # environment: production
+        environment: production
 
         env:
           FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
@@ -83,6 +83,14 @@ jobs:
             with:
               name: app-release
               path: project
+
+          - name: Checkout Secrets Repo
+            uses: actions/checkout@v4
+            with:
+              repository: IlhamTe/flutter-actions-demo-secrets
+              ref: refs/heads/main
+              token: ${{ env.SECRETS_TOKEN }}
+              path: secrets
 
           - name: Copy firebase service account
             run: |
